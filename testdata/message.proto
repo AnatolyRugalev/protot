@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protox.testdata;
+
+option go_package = "github.com/AnatolyRugalev/protox/testdata";
+
+message A {
+  string field1 = 1;
+  bool field2 = 2;
+  int64 field3 = 3;
+}
