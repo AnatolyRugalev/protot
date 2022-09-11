@@ -61,11 +61,11 @@ func (a Assertions) EqualWire(msgA, msgB proto.Message, msgAndArgs ...any) bool 
 	actualA := proto.Clone(msgA)
 	fuzzer.Message(msgA)
 	oneofsA = oneofs
-	err = protox.ConvertWithOptions(msgA, msgB, marshal, unmarshal)
+	err = protox.ConvertWithOptions(msgA, msgB, marshal, unmarshal, false)
 	if !a.assert.NoError(err, "error convering %s to %s", aDesc.FullName(), bDesc.FullName()) {
 		return false
 	}
-	err = protox.ConvertWithOptions(msgB, actualA, marshal, unmarshal)
+	err = protox.ConvertWithOptions(msgB, actualA, marshal, unmarshal, false)
 	if !a.assert.NoError(err, "error convering %s to %s", bDesc.FullName(), aDesc.FullName()) {
 		return false
 	}
@@ -76,11 +76,11 @@ func (a Assertions) EqualWire(msgA, msgB proto.Message, msgAndArgs ...any) bool 
 	actualB := proto.Clone(msgB)
 	fuzzer.Message(msgB)
 	oneofsB = oneofs
-	err = protox.ConvertWithOptions(msgB, msgA, marshal, unmarshal)
+	err = protox.ConvertWithOptions(msgB, msgA, marshal, unmarshal, false)
 	if !a.assert.NoError(err, "error convering %s to %s", bDesc.FullName(), aDesc.FullName()) {
 		return false
 	}
-	err = protox.ConvertWithOptions(msgA, actualB, marshal, unmarshal)
+	err = protox.ConvertWithOptions(msgA, actualB, marshal, unmarshal, false)
 	if !a.assert.NoError(err, "error convering %s to %s", aDesc.FullName(), bDesc.FullName()) {
 		return false
 	}
